@@ -16,33 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
     @Autowired
     private UserMapper userMapper;
-    /**
-     * 模拟数据
-     *
-     * */
-/*    private User user;
-    private Set<Role> roles;
-    private Set<Permission> permissions;
-    {
-        user = new User();
-        user.setId(1);
-        user.setUsername("admin");
-        user.setPassword("666");
-
-        roles = new HashSet<>();
-        Role role = new Role();
-        role.setId(1);
-        role.setName("部门经理");
-        role.setSn("deptMgr");
-        roles.add(role);
-
-        permissions = new HashSet<>();
-        Permission permission = new Permission();
-        permission.setId(1);
-        permission.setName("添加");
-        permission.setResource("user:*");
-        permissions.add(permission);
-    }*/
     //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
