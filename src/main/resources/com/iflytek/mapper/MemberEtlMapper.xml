@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.mapper.MemberEtlMapper">
+   <!--性别指标-->
+   <select id="getMemberSex" resultMap="MemberSexMap">
+      select sex as memberSex,count(id) as sexCount from t_member group by sex
+   </select>
+   <!--性别指标映射-->
+   <resultMap id="MemberSexMap" type="com.iflytek.domain.MemberSex">
+      <result column="memberSex" property="memberSex"></result>
+      <result column="sexCount" property="sexCount"></result>
+   </resultMap>
+   <!--渠道指标-->
+   <select id="getMemberRegChannel" resultMap="MemberRegChannelMap">
+      select member_channel as memberChannel,count(id) as channelCount from t_member group by member_channel
+   </select>
+   <!--渠道映射-->
+   <resultMap id="MemberRegChannelMap" type="com.iflytek.domain.MemberChannel">
+      <result property="memberChannel" column="memberChannel"></result>
+      <result property="channelCount" column="channelCount"></result>
+   </resultMap>
+   <!--是否关注-->
+   <select id="getMemberMpSub" resultMap="MemberMpSubMap">
+        select count(mp_open_id!='null') as subCount,(count(*)-count(mp_open_id!='null')) as unSubCount from t_member
+   </select>
+   <resultMap id="MemberMpSubMap" type="com.iflytek.domain.MemberMpSub">
+      <result property="subCount" column="subCount"></result>
+      <result property="unSubCount" column="unSubCount"></result>
+   </resultMap>
+   <!--热度指标-->
+   <select id="getMemberHeat" resultType="com.iflytek.domain.MemberHeat">
+        select count(phone='null') as reg,count(phone!='null') as complete from t_member
+        /*select from(select count(order_id) as orderCount,member_id from t_order group by member_id as t)
+        select count(distinct member_id) as coupon from t_coupon_member*/
+   </select>
+<!--   <resultMap id="MemberHeatMap" type="com.iflytek.domain.MemberHeat">
+      <result property="reg" column="reg"></result>
+      <result property="complete" column="complete"></result>
+      &lt;!&ndash;<association property="coupon" column="coupon" select="com.iflytek.mapper.MemberEtlMapper.getCoupon"></association>&ndash;&gt;
+   </resultMap>-->
+   <select id="getCoupon" resultType="int">
+      select count(distinct member_id) as coupon from t_coupon_member
+   </select>
+   <select id="getOrder" resultType="int">
+        select count(t.orderCount) as orderCount from((select count(order_id) as orderCount,member_id from t_order group by member_id having orderCount=1) t)
+   </select>
+   <select id="getOrderAgain" resultType="int">
+        select count(t.orderCount) as orderCount from((select count(order_id) as orderCount,member_id from t_order group by member_id having orderCount>=2) t)
+   </select>
+</mapper>

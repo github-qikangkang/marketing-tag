@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.mapper.LineChartEtlMapper">
+   <select id="getRegCount" resultMap="RegCountMap">
+      select t_order.create_time as day,max(order_id) orderCount,sum(distinct origin_price) as gmv,
+      count(distinct t_member.id) as regCount, max(t_member.id) as memberCount from t_order,t_member
+       where t_order.create_time>='2019-11-10 09:00:00' and t_order.create_time=t_member.create_time
+       group by day order by day
+   </select>
+   <resultMap id="RegCountMap" type="com.iflytek.domain.LineVo">
+      <result property="day" column="day"></result>
+      <result property="regCount" column="regCount"></result>
+      <result property="memberCount" column="memberCount"></result>
+      <result property="orderCount" column="orderCount"></result>
+      <result property="gmv" column="gmv"></result>
+   </resultMap>
+</mapper>

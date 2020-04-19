@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.mapper.UserMapper">
+    <select id="getAllRolesByUserId" resultMap="UserMap" parameterType="java.lang.Integer">
+        select * from user where id=#{id}
+    </select>
+<!--    用户映射-->
+    <resultMap id="UserMap" type="com.iflytek.domain.User">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <collection property="roles" column="id" select="getAllRoles"></collection>
+    </resultMap>
+    <!--角色映射-->
+    <resultMap id="RolesMap" type="com.iflytek.domain.Role">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sn" column="sn"></result>
+        <collection property="permissions" column="id" select="getAllPermissionByRoleId"></collection>
+    </resultMap>
+    <!--权限映射-->
+    <resultMap id="PermissionMap" type="com.iflytek.domain.Permission">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="resource" column="resource"></result>
+    </resultMap>
+<!--    根据用户id查找角色-->
+    <select id="getAllRoles" resultMap="RolesMap" parameterType="java.lang.Integer">
+        select * from role where id in(select user_role.role_id from user_role where user_role.user_id=#{id});
+    </select>
+    <!--根据角色id查找权限-->
+    <select id="getAllPermissionByRoleId" resultMap="PermissionMap" parameterType="java.lang.Integer">
+        select * from permission where id in(select role_permission.permission_id from role_permission where role_permission.role_id=#{id})
+    </select>
+    <select id="getUserByUserName" parameterType="java.lang.String" resultType="user">
+        select * from user where username=#{username};
+    </select>
+</mapper>

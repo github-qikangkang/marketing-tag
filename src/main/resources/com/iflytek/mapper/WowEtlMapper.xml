@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.mapper.WowEtlMapper">
+   <select id="regCountNum" resultMap="regCountNumMap">
+      select create_time as day,count(id) as regCount from t_member where create_time>='2019-11-10 09:00:00' group by create_time
+   </select>
+   <resultMap id="regCountNumMap" type="com.iflytek.domain.Reg">
+      <result property="day" column="day"></result>
+      <result property="regCount" column="regCount"></result>
+   </resultMap>
+</mapper>
