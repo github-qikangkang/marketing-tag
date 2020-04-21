@@ -6,6 +6,7 @@ import lombok.Data;
  * */
 @Data
 public class FunnelVo {
+    private Long present;
     private Long click; //800  点击
     private Long addCart; // 600  加购  加入购物车
     private Long order; //下单

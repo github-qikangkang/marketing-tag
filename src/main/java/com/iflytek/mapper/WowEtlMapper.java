@@ -13,5 +13,5 @@ import java.util.List;
 public interface WowEtlMapper {
 
     List<Reg> regCountNum();
-
+    List<Order> getOrderCount();
 }

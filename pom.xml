@@ -116,13 +116,7 @@
             <artifactId>google-collections</artifactId>
             <version>1.0</version>
         </dependency>
-        <!--        <dependency>
-                    <groupId>org.elasticsearch.client</groupId>
-                    <artifactId>elasticsearch-rest-client</artifactId>
-                    <version>7.2.0</version>
-                </dependency>-->
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

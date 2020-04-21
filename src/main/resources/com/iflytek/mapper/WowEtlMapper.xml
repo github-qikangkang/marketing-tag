@@ -8,4 +8,12 @@
       <result property="day" column="day"></result>
       <result property="regCount" column="regCount"></result>
    </resultMap>
+
+   <select id="getOrderCount" resultMap="OrderCountMap">
+          select create_time as day,count(order_id) as orderCount from t_order where create_time>='2019-11-10 09:00:00' group by create_time
+   </select>
+   <resultMap id="OrderCountMap" type="com.iflytek.domain.Order">
+      <result property="day" column="day"></result>
+      <result property="orderCount" column="orderCount"></result>
+   </resultMap>
 </mapper>

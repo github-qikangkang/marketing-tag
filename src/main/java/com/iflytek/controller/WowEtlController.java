@@ -25,8 +25,10 @@ public class WowEtlController {
     }
 
     //周下单量
-    public static List<Order> orderCount(){
-        List<Order> orders = new ArrayList<>();
+    @RequestMapping("/orderCount")
+    @ResponseBody
+    public List<Order> orderCount(){
+        List<Order> orders = wowEtlMapper.getOrderCount();
         return orders;
     }
 }
