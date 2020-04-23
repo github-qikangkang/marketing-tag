@@ -25,7 +25,7 @@ public class EsQueryService {
     private EsMappingEtlMapper esMappingEtlMapper;
 
     public List<MeMberTagEs> buildQuery(List<EsTag> tags) throws IOException {
-        String[] includes = {"memberId", "phone"};
+        String[] includes = {"memberId", "phone","favGoods"};
         SearchSourceBuilder builder = new SearchSourceBuilder();
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
         builder.query(boolQueryBuilder);
@@ -36,26 +36,21 @@ public class EsQueryService {
         List<QueryBuilder> mustNot = boolQueryBuilder.mustNot();
         List<QueryBuilder> must = boolQueryBuilder.must();
         for (EsTag tag : tags) {
-            System.out.println(tag.toString());
-
             String name = tag.getName();
             String value = tag.getValue();
             String type = tag.getType();
             if (type.equals("match")) {
                 should.add(QueryBuilders.matchQuery(name, value));
             }
-
             if (type.equals("notMatch")) {
                 mustNot.add(QueryBuilders.matchQuery(name, value));
             }
-
             if (type.equals("rangeBoth")) {
                 String[] split = value.split("-");
                 String v1 = split[0];
                 String v2 = split[1];
                 should.add(QueryBuilders.rangeQuery(name).lte(v2).gte(v1));
             }
-
             if (type.equals("rangeGte")) {
 
                 should.add(QueryBuilders.rangeQuery(name).gte(value));
@@ -70,12 +65,9 @@ public class EsQueryService {
             }
 
             Iterable<MeMberTagEs> meMberTagEs = esMappingEtlMapper.search(boolQueryBuilder);
-            System.out.println("===================================");
             List<MeMberTagEs> memberTags = Lists.newArrayList();
-            System.out.println(memberTags.toString());
             meMberTagEs.forEach(meMberTagEs1 -> {
                 memberTags.add(meMberTagEs1);
-                System.out.println(meMberTagEs1.toString());
             });
         /*SearchRequest request = new SearchRequest();
         request.indices("tags");

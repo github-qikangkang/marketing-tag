@@ -16,9 +16,11 @@
             font-size: 30px;
             color: #27d08a;
         }
-        h6{
+
+        h6 {
             color: #27d08a;
         }
+
         .el-tag {
             margin: 5px 5px 5px 5px;
         }
@@ -31,207 +33,227 @@
 <body>
 
 <div class="mainbox">
-<div class="container-fluid" id="app">
-    <p class="title">用户相关</p>
-    <div class="row">
-        <div class="col-3">
-            <h6>性别标签</h6>
-            <el-tag
-                    v-for="item in sexTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+    <div class="container-fluid" id="app">
+        <p class="title">用户相关</p>
+        <div class="row">
+            <div class="col-3">
+                <h6>性别标签</h6>
+                <el-tag
+                        v-for="item in sexTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>渠道标签</h6>
+                <el-tag
+                        v-for="item in channelTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>热度标签</h6>
+                <el-tag
+                        v-for="item in hotTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>关注标签</h6>
+                <el-tag
+                        v-for="item in subTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3" style="margin-top: 10px;">
+                <h6>注册时间</h6>
+                <el-tag
+                        v-for="item in regTimeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3" style="margin-top: 10px;">
+                <h6>下单时间</h6>
+                <el-tag
+                        v-for="item in orderTimeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
         </div>
-        <div class="col-3">
-            <h6>渠道标签</h6>
-            <el-tag
-                    v-for="item in channelTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+
+        <div class="row">
+            <div class="col-6">
+                <p class="title">营销提醒</p>
+            </div>
+            <div class="col-6">
+                <p class="title">消费等级</p>
+            </div>
         </div>
-        <div class="col-3">
-            <h6>热度标签</h6>
-            <el-tag
-                    v-for="item in hotTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+        <div class="row">
+            <div class="col-3">
+                <h6>首单免费失效</h6>
+                <el-tag
+                        v-for="item in freeTimeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>优惠券失效</h6>
+                <el-tag
+                        v-for="item in couponInvalidTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+
+            <div class="col-3">
+                <h6>充值金额</h6>
+                <el-tag
+                        v-for="item in chargeMoneyTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>下单金额</h6>
+                <el-tag
+                        v-for="item in orderMoneyTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
         </div>
-        <div class="col-3">
-            <h6>关注标签</h6>
-            <el-tag
-                    v-for="item in subTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+
+
+        <div class="row">
+
         </div>
-        <div class="col-3" style="margin-top: 10px;">
-            <h6>注册时间</h6>
-            <el-tag
-                    v-for="item in regTimeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+
+        <p class="title">商品喜好</p>
+        <div class="row">
+            <div class="col-3">
+                <h6>咖啡</h6>
+                <el-tag
+                        v-for="item in coffeeLikeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>果汁</h6>
+                <el-tag
+                        v-for="item in juiceLikeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>小食</h6>
+                <el-tag
+                        v-for="item in snacksLikeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>周边</h6>
+                <el-tag
+                        v-for="item in aroundTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
         </div>
-        <div class="col-3" style="margin-top: 10px;">
-            <h6>下单时间</h6>
-            <el-tag
-                    v-for="item in orderTimeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
+
+        <p class="title">效率提升</p>
+        <div class="row">
+            <div class="col-3">
+                <h6>超时</h6>
+                <el-tag
+                        v-for="item in overTimeTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+            <div class="col-3">
+                <h6>反馈</h6>
+                <el-tag
+                        v-for="item in feedbackTags"
+                        :key="item.label"
+                        :effect="item.effect"
+                        @click="addTag(item)"
+                >{{ item.label }}
+                </el-tag>
+            </div>
+
         </div>
+
+        <div style="display: flex;justify-content: center;margin-bottom: 10px;" class="btn-div" d>
+            <button class="btn-info btn" @click="gen">生成</button>
+            <button class="btn-primary btn" style="margin-left: 5px;">重置</button>
+            <button class="btn-info btn" @click="genForeCast" style="margin-left: 5px;">预测</button>
+        </div>
+
     </div>
 
-    <div class="row">
-        <div class="col-6">
-            <p class="title">营销提醒</p>
-        </div>
-        <div class="col-6">
-            <p class="title">消费等级</p>
-        </div>
+    <div style="display: none">
+        <table class="table table-bordered table-striped" id="test_table">
+            <thead>
+            <tr>
+                <td>用户ID</td>
+                <td>手机号</td>
+                <td>预测方案</td>
+            </tr>
+            </thead>
+            <tbody id="tb">
+
+            </tbody>
+        </table>
     </div>
-    <div class="row">
-        <div class="col-3">
-            <h6>首单免费失效</h6>
-            <el-tag
-                    v-for="item in freeTimeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>优惠券失效</h6>
-            <el-tag
-                    v-for="item in couponInvalidTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-
-        <div class="col-3">
-            <h6>充值金额</h6>
-            <el-tag
-                    v-for="item in chargeMoneyTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>下单金额</h6>
-            <el-tag
-                    v-for="item in orderMoneyTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-    </div>
-
-
-    <div class="row">
-
-    </div>
-
-    <p class="title">商品喜好</p>
-    <div class="row">
-        <div class="col-3">
-            <h6>咖啡</h6>
-            <el-tag
-                    v-for="item in coffeeLikeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>果汁</h6>
-            <el-tag
-                    v-for="item in juiceLikeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>小食</h6>
-            <el-tag
-                    v-for="item in snacksLikeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>周边</h6>
-            <el-tag
-                    v-for="item in aroundTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-    </div>
-
-    <p class="title">效率提升</p>
-    <div class="row">
-        <div class="col-3">
-            <h6>超时</h6>
-            <el-tag
-                    v-for="item in overTimeTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-        <div class="col-3">
-            <h6>反馈</h6>
-            <el-tag
-                    v-for="item in feedbackTags"
-                    :key="item.label"
-                    :effect="item.effect"
-                    @click="addTag(item)"
-            >{{ item.label }}
-            </el-tag>
-        </div>
-    </div>
-
-    <div style="display: flex;justify-content: center;margin-bottom: 10px;" class="btn-div" d>
-        <button class="btn-info btn" @click="gen">生成</button>
-        <button class="btn-primary btn" style="margin-left: 5px;">重置</button>
-    </div>
-
-
-</div>
 </div>
 <script th:src="@{/js/vue.js}"></script>
 <script th:src="@{https://unpkg.com/element-ui/lib/index.js}"></script>
 <script th:src="@{/js/axios.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jszip.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/FileSaver.js}"></script>
+<script type="text/javascript" th:src="@{/js/excel-gen.js}"></script>
+<script th:src="@{https://www.jq22.com/jquery/jquery-1.10.2.js}"></script>
 <script>
 
     function show(obj) {
@@ -398,18 +420,41 @@
                         document.body.removeChild(a)
                     }
                 })
+            },
+            genForeCast: function () {
+                let that = this;
+                let str = "";
+                axios({
+                    url: '/genForeCast',
+                    method: 'post',
+                    data: {
+                        selectedTags: Array.from(that.selectedTags)
+                    }
+                }).then(res=>{
+                    let data = res.data;
+                    let str = JSON.stringify(data);
+                    let parseJSON = eval('(' + str + ')');
+                    let s = "";
+                    for (let i = 0; i < parseJSON.length; i++) {
+                        s+="<tr><td>"+parseJSON[i]['userId']+"</td><td>"+parseJSON[i]['phone']+"</td><td>"+parseJSON[i]['result']+"</td></tr>";
+                    }
+                    $("#tb").html(s);
+                    var excel=new ExcelGen({"src_id":"test_table","show_header":true});
+                    excel.generate();
+                });
             }
         },
         created: function () {
 
-
         }
-
-
     });
-</script>
-<script>
+/*    $(function () {
+        $("#generate-excel").click(function(){
+            alert("1111");
 
+        });
+    });*/
 </script>
+
 </body>
 </html>
